@@ -3,8 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const IMC = () => {
 
-    const [FormularioEnviado, cambiarFormularioEnviado] = useState(false)
-    const [IMC, setIMC] = useState(0)
+    const [IMC, setIMC] = useState(null)
 	
 	return (
 		<>
@@ -18,7 +17,7 @@ const IMC = () => {
                 if (!valores.altura) {
                     errores.altura = "Por favor ingresa tú altura"
                 } else if(!/^[0-9]/.test(valores.altura)) {
-                    errores.altura = "Solo se permite numeros"
+                    errores.altura = "Solo se permite números"
                 }
                 if (!valores.peso) {
                     errores.peso = "Por favor ingresa tú peso"
@@ -31,10 +30,8 @@ const IMC = () => {
 
                 let altura = Math.round(valores.altura) / 100
                 let peso = Math.round(valores.peso)
-                let res = (peso / Math.pow(altura, 2)).toFixed(2)
-
-                cambiarFormularioEnviado(true)
-                setIMC(res)
+                let resIMC = (peso / Math.pow(altura, 2)).toFixed(2)
+                setIMC(resIMC)
             }}
         >
 
@@ -74,7 +71,7 @@ const IMC = () => {
                         )} />
                     </div>
 
-                    { FormularioEnviado && <p className='exito'>IMC: {IMC} </p> }
+                    { IMC && <p className='exito'>IMC: {IMC} </p> }
 
                 </Form>
 
