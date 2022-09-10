@@ -1,11 +1,11 @@
 import './App.css';
-import Formulario from './components/Formulario';
+import IMC from './components/IMC';
 
 
 function App() {
   return (
     <div className="App">
-      <Formulario />
+      <IMC />
     </div>
   );
 }
